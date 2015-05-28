@@ -1,0 +1,191 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+
+
+
+
+<center><header>
+  <div class="container">
+    
+   
+    <img src="assets/images/biblio.jpg" alt="Biblioteca" class="img-circle">
+  </div>
+</header>
+</center>
+
+<li ng-hide="isAdmin()" ng-class="{active: isActive('/admin')}">
+<div class="container">
+
+
+
+
+  <div class="row">
+    <p>Buscar: <input ng-model="searchText" type="text" placeholder="Ingrese alguna wea"></p>
+    
+
+    Categotria: <select ng-model="searchcategoria" >
+      <option    ng-repeat="objeto in cat " value="{{objeto.categoria}}">{{objeto.categoria}}</option>
+
+</select>
+
+
+
+
+
+<table class="table table-bordered" id="searchTextResults" idd="searchcategoriaResults">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Categoria</th>
+          <th>Año</th>
+          <th>Autor</th>
+          <th>Marca/Editorial</th>
+          <th>Ubicacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="cosa in articulos | filter:searchText | filter:searchcategoria ">
+          
+          <td>{{cosa.titulo}}</td>
+          <td>{{cosa.categoria}}</td>
+          <td>{{cosa.ano}}</td>
+          <td>{{cosa.autor}}</td>
+          <td>{{cosa.marca}}</td>
+          <td>{{cosa.ubicacion}}</td>
+          <td><md-button aria-label="sosi" class="md-raised md-primary" ng-click="getArticulo(cosa)"><i class="fa fa-check "></i></md-button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+</li>
+
+
+
+
+
+
+
+<li ng-show="isAdmin()" ng-class="{active: isActive('/admin')}">
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Lista de Articulos:</h1>
+    </div>
+  </div>
+
+
+
+<div class="container">
+	<div class="row">
+<table class="table table-bordered">
+      <thead>
+        <tr>
+          
+          <th>Titulo</th>
+          <th>Categoria</th>
+          <th>Año</th>
+          <th>Autor</th>
+          <th>Marca/Editorial</th>
+          <th>Proveedor</th>
+          <th>Precio</th>
+          <th>Dias de Prestamo</th>
+          <th>Ubicacion</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="cosa in articulos">
+          <td>{{cosa.titulo}}</td>
+          <td>{{cosa.categoria}}</td>
+          <td>{{cosa.ano}}</td>
+          <td>{{cosa.autor}}</td>
+          <td>{{cosa.marca}}</td>
+          <td>{{cosa.id_proveedor}}</td>
+          <td>{{cosa.precio}}</td>
+          <td>{{cosa.diasprestamo}}</td>
+          <td>{{cosa.ubicacion}}</td>
+          
+          <td><md-button aria-label="sosi" class="md-raised md-primary" ng-click="deletearticulo(cosa)"><i class="fa fa-trash-o "></i></md-button></td>
+        </tr>
+      </tbody>
+    </table>
+	</div>
+</div>
+	
+	Esconder
+  <md-switch class="md-primary" md-no-ink aria-label="Switch No Ink" ng-model="seleccion">
+    {{seleccion ? 'Si' : 'No'}}
+  </md-switch>
+
+
+  <div ng-show="seleccion" >
+ <form class="thing-form ">
+    <label>Ingreso</label>
+   <div class="row">
+    <div class="col-md-6">
+    <div class="input-group">
+    	<div class="input-group-addon" >Titulo</div>
+      <input type="text" class="form-control" placeholder="Titulo" ng-model="articulo.titulo" >
+
+    </div>
+     <div class="input-group">
+     	<div class="input-group-addon">Categoria</div>
+      <input type="text" class="form-control" placeholder="Categoria" ng-model="articulo.categoria" >
+
+    </div>
+    <div class="input-group">
+    	<div class="input-group-addon">Año</div>
+      <input type="number" class="form-control" placeholder="Año" ng-model="articulo.ano" >
+
+    </div>
+     <div class="input-group">
+     	<div class="input-group-addon">Autor</div>
+      <input type="text" class="form-control" placeholder="Autor" ng-model="articulo.autor" >
+</div>
+    </div>
+
+    
+    <div class="col-md-6">
+     <div class="input-group">
+     	<div class="input-group-addon">Marca</div>
+      <input type="text" class="form-control" placeholder="Marca" ng-model="articulo.marca" >
+
+    </div>
+     <div class="input-group">
+     	<div class="input-group-addon">Proveedor</div>
+      <input type="text" class="form-control" placeholder="Proveedor" ng-model="articulo.id_proveedor" >
+  
+    </div>
+     <div class="input-group">
+     	<div class="input-group-addon">Precio</div>
+      <input type="number" class="form-control" placeholder="Precio" ng-model="articulo.precio" >
+
+    </div>
+     <div class="input-group">
+     	<div class="input-group-addon">Dias de Prestamo</div>
+      <input type="number" class="form-control" placeholder="Dias de Prestamo" ng-model="articulo.diasprestamo">
+    </div>
+    <div class="input-group">
+     	<div class="input-group-addon">Ubicacion</div>
+      <input type="text" class="form-control" placeholder="Ubicacion" ng-model="articulo.ubicacion" >
+    </div>
+  </div>
+  </div>
+  </form>
+
+      <span class="input-group-btn">
+        <button type="submit" class="btn btn-primary" ng-click="addarticulo(articulo)">Agregar</button>
+      </span>
+    </div>
+</div>
+</li>
+<footer class="footer">
+  <div class="container">
+    
+  </div>
+</footer>
+
+

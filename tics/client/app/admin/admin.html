@@ -1,0 +1,27 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<div class="container">
+ 
+  <ul class="list-group">
+    <div class="list-group-item"  ng-repeat="user in users">
+        <strong>{{user.name}}</strong><br>
+        <span class="text-muted">{{user.email}}</span>
+        <a ng-click="delete(user)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+
+        <br><strong>Prestamos:</strong><br>
+
+        <li class="list-group-item" ng-repeat="prestamo in user.prestamos">
+
+        <span class="text-muted">{{prestamo.titulo}}</span>
+        <a ng-click="delete(articulo)" class="trash"><span class="glyphicon glyphicon-trash pull-right"></span></a>
+         </li>
+        
+        
+    </div >
+  </ul>
+</div>
+
+ 
+</div>
+
+

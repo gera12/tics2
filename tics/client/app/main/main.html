@@ -1,0 +1,65 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<center><header>
+  <div class="container">
+    
+   
+    <img src="assets/images/biblio.jpg" alt="Biblioteca" class="img-circle">
+  </div>
+</header>
+</center>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+      <h1 class="page-header">Prestamos:</h1>
+      
+    </div>
+  </div>
+
+ 
+</div>
+
+
+<div class="container">
+
+
+
+
+  <div class="row">
+    <p>Buscar: <input ng-model="searchText" type="text" placeholder="Ingrese alguna wea"></p>
+    
+
+    Categotria: <select ng-model="searchcategoria" >
+      <option    ng-repeat="objeto in cat " value="{{objeto.categoria}}">{{objeto.categoria}}</option>
+
+</select>
+
+<table class="table table-bordered" id="searchTextResults" idd="searchcategoriaResults">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Titulo</th>
+          <th>Categoria</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="cosa in users | filter:searchText | filter:searchcategoria ">
+          <td>{{cosa._id}}</td>
+          <td>{{cosa.titulo}}</td>
+          <td>{{cosa.categoria}}</td>
+         
+          <td><md-button aria-label="sosi" class="md-raised md-primary" ng-click="getArticulo(cosa)"><i class="fa fa-check "></i></md-button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+
+
+
+<footer class="footer">
+  
+</footer>
